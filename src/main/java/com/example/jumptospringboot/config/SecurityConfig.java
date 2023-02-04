@@ -28,6 +28,9 @@ public class SecurityConfig {
                         .ignoringRequestMatchers("/h2-console/**").disable())
                 .headers(header -> header
                         .frameOptions().sameOrigin())
+                .formLogin(form -> form
+                        .loginPage("/user/login")
+                        .defaultSuccessUrl("/"))
                 .build();
     }
 
