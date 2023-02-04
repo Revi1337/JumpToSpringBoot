@@ -2,7 +2,6 @@ package com.example.jumptospringboot.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 
@@ -18,4 +17,5 @@ public class Answer {
 
     @ManyToOne private Question question;
 
+    @ManyToOne private SiteUser author;
 }

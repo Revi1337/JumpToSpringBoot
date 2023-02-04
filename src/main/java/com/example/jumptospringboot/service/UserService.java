@@ -3,8 +3,10 @@ package com.example.jumptospringboot.service;
 import com.example.jumptospringboot.domain.SiteUser;
 import com.example.jumptospringboot.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 
 @Service @RequiredArgsConstructor
 public class UserService {
@@ -21,6 +23,11 @@ public class UserService {
                         .password(passwordEncoder.encode(password))
                         .build()
         );
+    }
+
+    public SiteUser getUser(String username) {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new DataIntegrityViolationException("siteuser not found"));
     }
 
 }
