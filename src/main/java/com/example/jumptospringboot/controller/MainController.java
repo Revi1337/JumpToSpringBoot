@@ -9,8 +9,13 @@ public class MainController {
 
     @GetMapping(value = "/sbb")
     @ResponseBody
-    public void index() {
-        System.out.println("index");
+    public String index() {
+        return "Hello Spring";
+    }
+
+    @GetMapping(value = "/")
+    public String root() {
+        return "redirect:/question/list";
     }
 
 }
